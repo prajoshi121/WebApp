@@ -33,7 +33,6 @@ def create_lead(request):
 
 def list_lead(request):
 
-
     submissions = UserSubmission.objects.all()
 
     information = {
