@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'webapp/style.css' %}">
+
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <a id="logo" href="#" >Website.com</a>
+            <a href="#">Account</a>
+            <a href="#">My Cart</a>
+            <a href="#">Contact Us</a>
+            <input placeholder="search Website.in">
+            <button>Search</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="content">
+            <h1>Welcome to Website.com</h1>
+            <p>This is the main content of our Website.in where one can find any infromation.</p>
+            <p>Cureent Date And Time Is: {{ current_datetime }} </p>
+            <p>Random Quote: "{{ Random_Quote }}"</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact us at: info@website.com</p>
+        <p>&copy; 2024 Website.com. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
