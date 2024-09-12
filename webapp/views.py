@@ -1,13 +1,18 @@
 import random
 from django.shortcuts import render
 from datetime import datetime
+from .models import UserSubmission
+
 
 def home(request):
 
     if request.method == 'POST':
         name = request.POST['name']
+        UserSubmission.objects.create(name = name)
     else:
         name = 'guest'
+
+    submissions = UserSubmission.objects.all()
 
     present = datetime.now()
 
@@ -24,7 +29,8 @@ def home(request):
     information = {
         'current_datetime' : present,
         'Random_Quote' : random_quote,
-        'name' : name
+        'name' : name,
+        'submissions' : submissions,
     }
     return render(request, "webapp/index.html", information)
 

@@ -34,6 +34,25 @@
                 <input type="text" id="name" name="name" required><br><br>
                 <button type="submit">Submit</button>
             </form>
+
+            <!-- Section to display all UserSubmission entries -->
+            <h2>Submitted Entries</h2>
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Submitted At</th>
+                </tr>
+                {% for submission in submissions %}
+                <tr>
+                    <td>{{ submission.name }}</td>
+                    <td>{{ submission.timestamp }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No submissions yet.</td>
+                </tr>
+                {% endfor %}
+            </table>
         </section>
     </main>
 
