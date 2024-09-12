@@ -20,10 +20,23 @@
 
     <main>
         <section class="content">
-            <h1>Welcome to Website.com</h1>
-            <p>This is the main content of our Website.in where one can find any infromation.</p>
-            <p>Cureent Date And Time Is: {{ current_datetime }} </p>
-            <p>Hi here is a quote for you : "{{ Random_Quote }}"</p>
+            <h2>Submitted Entries</h2>
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Submitted At</th>
+                </tr>
+                {% for submission in submissions %}
+                <tr>
+                    <td>{{ submission.name }}</td>
+                    <td>{{ submission.timestamp }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No submissions yet.</td>
+                </tr>
+                {% endfor %}
+            </table>    
         </section>
     </main>
 

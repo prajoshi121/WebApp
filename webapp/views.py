@@ -6,14 +6,6 @@ from .models import UserSubmission
 
 def home(request):
 
-    if request.method == 'POST':
-        name = request.POST['name']
-        UserSubmission.objects.create(name = name)
-    else:
-        name = 'guest'
-
-    submissions = UserSubmission.objects.all()
-
     present = datetime.now()
 
     quotes = [
@@ -29,8 +21,24 @@ def home(request):
     information = {
         'current_datetime' : present,
         'Random_Quote' : random_quote,
-        'name' : name,
-        'submissions' : submissions,
     }
     return render(request, "webapp/index.html", information)
+
+def create_lead(request):
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        UserSubmission.objects.create(name = name)
+    return render(request, 'webapp/create_lead.html', {})
+
+def list_lead(request):
+
+
+    submissions = UserSubmission.objects.all()
+
+    information = {
+        'submissions' : submissions
+    }
+
+    return render(request, 'webapp/listlead.html', information)
 
