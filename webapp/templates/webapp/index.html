@@ -25,7 +25,15 @@
             <h1>Welcome to Website.com</h1>
             <p>This is the main content of our Website.in where one can find any infromation.</p>
             <p>Cureent Date And Time Is: {{ current_datetime }} </p>
-            <p>Random Quote: "{{ Random_Quote }}"</p>
+            <p>Hi {{ name }} here is a quote for you : "{{ Random_Quote }}"</p>
+
+            <h2>Submit Your Details</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <button type="submit">Submit</button>
+            </form>
         </section>
     </main>
 

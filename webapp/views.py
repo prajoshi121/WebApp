@@ -4,9 +4,14 @@ from datetime import datetime
 
 def home(request):
 
+    if request.method == 'POST':
+        name = request.POST['name']
+    else:
+        name = 'guest'
+
     present = datetime.now()
 
-    Quotes = [
+    quotes = [
 
         "A room without books is like a body without a soul.",
         "Be the change that you wish to see in the world.",
@@ -14,11 +19,12 @@ def home(request):
         "A person who never made a mistake never tried anything new."
     ]
 
-    Random_Quote = random.choice(Quotes)
+    random_quote = random.choice(quotes)
 
-
-    Information = {
+    information = {
         'current_datetime' : present,
-        'Random_Quote' : Random_Quote
+        'Random_Quote' : random_quote,
+        'name' : name
     }
-    return render(request, "webapp/index.html", Information)
+    return render(request, "webapp/index.html", information)
+
